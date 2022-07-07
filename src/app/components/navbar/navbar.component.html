@@ -1,0 +1,15 @@
+<body>
+    <header>
+        <p class="logo">Moview App</p>
+        <nav>
+            <ul class="nav__links">
+                <li *ngIf="loginService.isLoggedIn()"><a (click)="goHome()">Home</a></li>
+                <li *ngIf="loginService.isLoggedIn() && loginService.loggedInRole() == 'user'"><a (click)="goPost()">My Posts</a></li>
+                <li><a>About</a></li>
+                <li><a>Contact Us</a></li>
+            </ul>
+        </nav>
+        <a *ngIf="!loginService.isLoggedIn()" class="cta"><button (click)="onLogin()">Login</button></a>
+        <a *ngIf="loginService.isLoggedIn()" class="cta" ><button (click)="onLogout()">Logout</button></a>
+    </header>
+</body>

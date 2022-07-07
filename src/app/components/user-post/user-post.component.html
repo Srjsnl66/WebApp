@@ -1,0 +1,37 @@
+<div class="container buy-button">
+    <button class="register" (click)="addPost()">Add Post</button>
+</div>
+
+<div id="main" class="main-container box" *ngFor="let movie of movies">
+    <div class="row">
+    
+    <h2 *ngIf="!movie.isEditable">{{movie.title}}</h2>
+    <p *ngIf="!movie.isEditable" style="text-transform: uppercase;">{{movie.category}}</p>
+    <p *ngIf="!movie.isEditable" style="font-size: 12px;">{{movie.description}}</p>
+
+
+    <div class="input-box" *ngIf="movie.isEditable" style="margin-top: 30px;">
+        <input type="text" [(ngModel)]="movie.title" name="name">
+        <label>Movie Title</label>
+    </div>
+
+    <div class="input-box" *ngIf="movie.isEditable">
+        <input type="text" [(ngModel)]="movie.category" name="category">
+        <label>Category</label>
+    </div>
+
+    <div class="input-box" *ngIf="movie.isEditable">
+        <input type="text" [(ngModel)]="movie.description" name="description">
+        <label>Description</label>
+    </div>
+
+    <div class="buy-button">
+        <button *ngIf="!movie.isEditable" class="btn register" (click)="deletePost(movie)" style="float: right;">Delete</button>
+        <button *ngIf="!movie.isEditable" class="btn login" (click)="editPost(movie)" style="float: right; margin-right: 10px;">Edit</button>
+        <button *ngIf="movie.isEditable" class="btn register" (click)="savePost(movie)" style="float: right;">Save</button>
+    </div>
+    </div>
+</div>
+    
+    <div id="logged-in">
+    </div>
